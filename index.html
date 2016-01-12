@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="partnersApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controller/appController.js"></script>
+    <script src="js/service/appService.js"></script>
+    <script src="js/filter/filters.js"></script>
+  
+
+    <title>Coding Exercise</title>
+    <style>
+        table {
+            width: 100%;
+            min-width: 500px;
+            max-width: 1500px;
+        }
+
+        tr:nth-child(even) td {
+            background: #C3DCAD;
+        }
+
+        tr:nth-child(odd) td {
+            background: #eeeeee;
+        }
+
+        th, td {
+            border: 1px solid white;
+        }
+
+        .text-trim-info {
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .date-info {
+            max-width: 150px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        
+    </style>
+</head>
+
+<body ng-controller="appController">
+    <div>
+        <h1>Kiva Partners</h1>
+    </div>
+    <div>
+        <strong>Total: {{total}}</strong>
+    </div>
+    <br/>
+    <div>
+        <strong>Filter by:</strong>
+        <select data-ng-model="currentOption"
+                data-ng-options="opt for opt in optionList" ng-selected="optionHandler()"></select>
+    </div>
+    <br />
+    <div>
+        <select data-ng-model="currentFilter" data-ng-show='currentOption.length' 
+                data-ng-options="filterOpt.name for filterOpt in filterList  | orderBy:'name'" ng-selected="filterChangeHandler()"></select>
+    </div>
+    <br />
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>country</th>
+                    <th>status</th>
+                    <th>rating</th>
+                    <th>start_date</th>
+                    <th>delinquency_rate</th>
+                    <th>default_rate</th>
+                    <th>total_amount_raised</th>
+                    <th>loans_posted</th>
+                    <th>portfolio_yield</th>
+                    <th>profitability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="partner in partners   | filterByName:currentFilter:currentOption">
+                    <td>{{partner.id}}</td>
+                    <td class="text-trim-info">{{partner.name }}</td>
+                    <td>{{partner.country}}</td>
+                    <td>{{partner.status}}</td>
+                    <td>{{partner.rating}}</td>
+                    <td class="date-info">{{partner.start_date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>{{partner.delinquency_rate | number}}</td>
+                    <td>{{partner.default_rate | number}}</td>
+                    <td>{{partner.total_amount_raised}}</td>
+                    <td>{{partner.loans_posted}}</td>
+                    <td>{{partner.portfolio_yield}}</td>
+                    <td>{{partner.profitability}}</td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+</html>
