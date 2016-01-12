@@ -1,0 +1,32 @@
+﻿        table 
+        {
+            width: 100%;
+            min-width: 500px;
+            max-width: 1500px;
+        }
+
+        tr:nth-child(even) td {
+            background: #C3DCAD;
+        }
+
+        tr:nth-child(odd) td {
+            background: #eeeeee;
+        }
+
+        th, td {
+            border: 1px solid white;
+        }
+
+        .text-trim-info {
+            max-width: 250px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .date-info {
+            max-width: 150px;
+            white-space: nowrap;
+            position: relative;
+        }
