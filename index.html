@@ -3,6 +3,7 @@
 <html ng-app="partnersApp" lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/app.css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-route.min.js"></script>
@@ -13,41 +14,7 @@
   
 
     <title>Coding Exercise</title>
-    <style>
-        table {
-            width: 100%;
-            min-width: 500px;
-            max-width: 1500px;
-        }
-
-        tr:nth-child(even) td {
-            background: #C3DCAD;
-        }
-
-        tr:nth-child(odd) td {
-            background: #eeeeee;
-        }
-
-        th, td {
-            border: 1px solid white;
-        }
-
-        .text-trim-info {
-            max-width: 150px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        .date-info {
-            max-width: 150px;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        
-    </style>
+    
 </head>
 
 <body ng-controller="appController">
@@ -91,7 +58,7 @@
                 <tr ng-repeat="partner in partners   | filterByName:currentFilter:currentOption">
                     <td>{{partner.id}}</td>
                     <td class="text-trim-info">{{partner.name }}</td>
-                    <td>{{partner.country}}</td>
+                    <td class="text-trim-info">{{partner.country}}</td>
                     <td>{{partner.status}}</td>
                     <td>{{partner.rating}}</td>
                     <td class="date-info">{{partner.start_date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
